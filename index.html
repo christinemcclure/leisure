@@ -6,8 +6,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
-        var myData= {name:"Christine"};
-        $('p').html(myData.name);
+
+       var myData=$.parseJSON('{"isbn":"111222333"}');
+
+        $('p').html(myData.isbn);
       });
     </script>
   </head>
