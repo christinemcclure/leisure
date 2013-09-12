@@ -6,21 +6,49 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
+        var Books = 
+        [
+            {
+                "isbn": 9780439023511,
+                "title": "Mockingjay",
+                "author": "Suzanne Collins",
+                "subject": "Insurgency--Juvenile fiction"
+            },
+            {
+                "isbn": 9787506358026,
+                "title": " Geng Fang yi = The hunger games",
+                "author": "Suzanne Collins",
+                "subject": "Survival--Juvenile fiction"
+            },
+            {
+                "isbn": 9780439023498,
+                "title": "Catching Fire",
+                "author": "Suzanne Collins",
+                "subject": "Survival--Juvenile fiction"
+            },
+            {
+                "isbn": 9781451665475,
+                "title": "Make your brain smarter : increase your brain's creativity, energy, and focus",
+                "author": "Sandra Bond Chapman with Shelly Kirkland",
+                "subject": "Thought and thinking"
+            },
+            {
+                "isbn": 9780307396440,
+                "title": "Martha Stewart's cooking school : lessons and recipes for the home cook",
+                "author": "by Martha Stewart with Sarah Carey",
+                "subject": "Cookery"
+            }
+        ];
 
-    // use http://www.freeformatter.com/json-formatter.html to compress
-    var json = '{"Books":[{\"isbn\":9780439023511,\"title\":\"Mockingjay\",\"author\":\"Suzanne Collins\",\"subject\":\"Insurgency--Juvenile fiction\"},{\"isbn\":9787506358026,\"title\":\" Geng Fang yi = The hunger games\",\"author\":\"Suzanne Collins\",\"subject\":\"Survival--Juvenile fiction\"},{\"isbn\":9780439023498,\"title\":\"Catching Fire\",\"author\":\"Suzanne Collins\",\"subject\":\"Survival--Juvenile fiction\"},{\"isbn\":9781451665475,\"title\":\"Make your brain smarter : increase your brain\'s creativity, energy, and focus\",\"author\":\"Sandra Bond Chapman with Shelly Kirkland\",\"subject\":\"Thought and thinking\"},{\"isbn\":9780307396440,\"title\":\"Martha Stewart\'s cooking school : lessons and recipes for the home cook\",\"author\":\"by Martha Stewart with Sarah Carey\",\"subject\":\"Cookery\"}]}';
-
-    var json_parsed = $.parseJSON(json);
-
-    for (var i = 0; i < json_parsed.Books.length; i++){
-        var user = json_parsed.Books[i];
-        $('#bookDisplay').append($('<p>').html('Title: '+user.title+'<br />Author: '+user.author+'<br />Subject: '+user.subject));
-    }
-            
+      var numBooks = Books.length;
+      var randomNum=Math.floor(Math.random()*(numBooks))
+      var book = Books[randomNum];
+      $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author+'<br />Subject: '+book.subject));
     });
     </script>
   </head>
   <body>
+    <p>Here's a random book:</p>
     <div id="bookDisplay">
     </div>
   </body>
