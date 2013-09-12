@@ -44,6 +44,7 @@
       var randomNum=Math.floor(Math.random()*(numBooks))
       var book = Books[randomNum];
       $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author+'<br />Subject: '+book.subject));
+      $('#response').html('That looks interesting. <a href=\"\">Is it checked out?</a>');
     });
     </script>
   </head>
@@ -51,5 +52,6 @@
     <p>Here's a random book:</p>
     <div id="bookDisplay">
     </div>
+    <p id="response"></p>
   </body>
 </html>
