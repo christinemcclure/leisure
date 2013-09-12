@@ -14,12 +14,14 @@
 
     for (var i = 0; i < json_parsed.Books.length; i++){
         var user = json_parsed.Books[i];
-        $('body').append($('<p>').html('Title: '+user.title+'<br />Author: '+user.author+'<br />Subject: '+user.subject));
+        $('#bookDisplay').append($('<p>').html('Title: '+user.title+'<br />Author: '+user.author+'<br />Subject: '+user.subject));
     }
             
     });
     </script>
   </head>
   <body>
+    <div id="bookDisplay">
+    </div>
   </body>
 </html>
