@@ -61,8 +61,12 @@
       var numBooks = Books.length;
       var randomNum=Math.floor(Math.random()*(numBooks))
       var book = Books[randomNum];
-      $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author+'<br />Subject: '+book.subject));
-      $('#response').html('That looks interesting. <a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">Is it checked out?</a>');
+      $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
+      $('#response').html('<p>That looks interesting. '+ 
+            '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
+            'Is it checked out?</a></p>'+
+            '<p>View more like this:<br/>'+book.subject
+         );
     });
     </script>
   </head>
