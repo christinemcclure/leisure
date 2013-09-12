@@ -58,14 +58,31 @@
             }
         ];
 
-      var numBooks = Books.length;
-      var randomNum=Math.floor(Math.random()*(numBooks))
-      var book = Books[randomNum];
-      $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
-      $('#response').html('<p>That looks interesting. '+ 
-            '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
-            'Is it checked out?</a></p>');
-      $('#searchSubject').html('View more like this:<br/>'+book.subject);  
+        function loadRandomBook(){
+            var numBooks = Books.length;
+            var randomNum=Math.floor(Math.random()*(numBooks))
+            var book = Books[randomNum];
+            $('#bookDisplay').empty();
+            $('#searchSubject').click(function(){
+                  for (i=0;i<Books.length;i++){
+
+                  }
+            });
+
+            $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
+            $('#response').html('<p>That looks interesting. '+ 
+                  '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
+                  'Is it checked out?</a></p>'
+              );         
+            $('#follow').html( '<p>Show me another book</p>');
+        }
+
+           loadRandomBook();//populate upon loading the page
+           
+           $('#follow').click(function(){
+               loadRandomBook();
+           });
+      
     });
     </script>
   </head>
@@ -74,6 +91,6 @@
     <div id="bookDisplay">
     </div>
     <p id="response"></p>
-    <p id="searchSubject"></p>
+    <p id="follow"></p>
   </body>
 </html>
