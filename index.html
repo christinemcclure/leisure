@@ -82,6 +82,7 @@
             });
 
             $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
+            $('#bookDisplay').append($('<p id=\'desc\'>').html('Description: '+book.description));
             $('#response').html('<p>That looks interesting. '+ 
                   '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
                   'Is it checked out?</a></p>'
