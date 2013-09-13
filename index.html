@@ -82,7 +82,8 @@
             $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
 
             if (descTrunc){
-              $('#bookDisplay').append($('<p id=\'desc\'>').html('Description: '+descTrunc + " Show full description"));
+              $('#bookDisplay').append($('<p>').html('Description: '+descTrunc));
+              $('#bookDisplay').append($('<p id=\'desc\'>').html('Show full description'));
             }
             else {
               $('#bookDisplay').append($('<p>').html('Description: '+book.description));
