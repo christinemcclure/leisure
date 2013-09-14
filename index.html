@@ -98,8 +98,7 @@
             $('#bookAuthor').append($('<p>').html(book.author));
 
             if (descTrunc){
-              $('#bookDescText').append($('<p>').html(descTrunc));
-              $('#bookDescText').append($('<button id=\'showFull\' class=\"btn btn-primary btn-xs\">').html('Show full description'));
+              $('#bookDescText').html('<p>'+descTrunc+'<button id=\'showFull\' class=\"btn btn-primary btn-xs\">Show full description</button></p>');
             }
             else {
               $('#bookDescText').append($('<p>').html('Description: '+randomBookDescText));
