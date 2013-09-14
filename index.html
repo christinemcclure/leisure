@@ -11,7 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
-        bookDesc = null; //global variable for use in multiple functions
+        bookDescText = null; //global variable for use in multiple functions
         var Books = 
           [
               {
@@ -78,9 +78,9 @@
             var numBooks = Books.length;
             var randomNum=Math.floor(Math.random()*(numBooks))
             var book = Books[randomNum];
-            bookDesc = book.description;
-            if (bookDesc.length > truncLen) {
-               var descTrunc = bookDesc.substring(0,truncLen) + "...";
+            bookDescText = book.description;
+            if (bookDescText.length > truncLen) {
+               var descTrunc = bookDescText.substring(0,truncLen) + "...";
             }
 
 
@@ -90,18 +90,18 @@
             $('#bookInfo').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
 
             if (descTrunc){
-              $('#bookInfo').append($('<p>').html('Description: '+descTrunc));
-              $('#bookDesc').append($('<p id=\'desc\'>').html('Show full description'));
+              $('#bookDesc').append($('<p>').html('Description: '+descTrunc));
+              $('#bookDesc').append($('<p id=\'showFull\'>').html('Show full description'));
             }
             else {
-              $('#bookDesc').append($('<p>').html('Description: '+bookDesc));
+              $('#bookDesc').append($('<p>').html('Description: '+bookDescText));
             }
 
             $('#showOPAC').html('<p>That looks interesting. '+
                   '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
                   'Is it checked out?</a></p>'
               );         
-            $('#newBook').html( '<p>Show me another book</p>');
+            $('#newBook').html( '<p>No, thanks. Show me another book</p>');
 
 
         }
