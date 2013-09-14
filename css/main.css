@@ -7,9 +7,8 @@
   margin: 0 10px 0 0;
   float:left;
 }
-div.row {
-  margin: 10px 0;
-}
+
+#bookDescText {margin-bottom: 40px;}
 div.row p {
   margin: 20px 0 0 0;
 }
