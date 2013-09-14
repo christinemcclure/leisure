@@ -103,9 +103,9 @@
               $('#bookDescText').append($('<p>').html('Description: '+randomBookDescText));
             }
 
-            $('#showOPACbtn').html('<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
-                  'Is it checked out?</a></p>');         
-            $('#newBookBtn').html( '<p>Show me another book</p>');
+            $('#showOPACbtn').html('<button class="btn btn-primary"><a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
+                  'Is it checked out?</a></button>');
+            $('#newBookBtn').html( '<button class="btn btn-primary">Show me another book</button>');
 
             $( "#showFull" ).bind( "click", function( ) { // add click event for dynamically-created element
                $('#bookDescText').empty();
