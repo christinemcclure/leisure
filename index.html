@@ -69,9 +69,44 @@
                   "author": "Julia Child with Alex Prud'Homme",
                   "subject": "Cookery, French",
                   "description": "Here is the captivating story of Julia Child's years in France, where she fell in love with French food and found \"her true calling.\" From the moment she and her husband Paul, who worked for the USIS, arrived in the fall of 1948, Julia had an awakening that changed her life. Soon this tall, outspoken gal from Pasadena, California, who didn't speak a word of French and knew nothing about the country, was steeped in the language, chatting with purveyors in the local markets, and enrolled in the Cordon Bleu. She teamed up with two fellow gourmettes, Simone Beck and Louisette Bertholle, to help them with a book on French cooking for Americans. Filled with her husband's beautiful black-and-white photographs as well as family snapshots, this memoir is laced with wonderful stories about the French character, particularly in the world of food, and the way of life that Julia embraced so wholeheartedly. Bon appâetit!--From publisher description."
+              },
+              {
+                  "isbn": "074325998X",
+                  "title": "For us, the living : a comedy of customs",
+                  "author": "Robert A. Heinlein",
+                  "subject": "Traffic accident victims--Fiction"
+              },
+              {
+                  "isbn": "1607100703",
+                  "title": "Five novels",
+                  "author": "Mark Twain"
+              },
+              {
+                  "isbn": "0553801503",
+                  "title": "A feast for crows",
+                  "author": "George R.R. Martin",
+                  "subject": "Fantasy fiction"
+              },
+              {
+                  "isbn": "0143038435",
+                  "title": "Fantasyland : a sportwriter's obsessive bid to win the world's most ruthless fantasy baseball league ",
+                  "author": "Sam Walker",
+                  "subject": "Fantasy baseball"
+              },
+              {
+                  "isbn": "0151010900",
+                  "title": "The facts behind the Helsinki Roccamatios",
+                  "author": "Yann Martel",
+                  "description": "Here are four unforgettable stories by the author of Life of Pi. In the exquisite title novella, a very young man dying of AIDS joins his friend in fashioning a story of the Roccamatio family of Helsinki, set against the yearly march of the twentieth century whose horrors and miracles their story echoes. In \"The Time I Heard the Private Donald J. Rankin String Concerto with One Discordant Violin, by the American composer John Morton,\" a Canadian university student visits Washington, D.C., and experiences the Vietnam War and its aftermath through an intense musical encounter. In \"Manners of Dying,\" variations of a warden's letter to the mother of a son he has just executed reveal how each life is contained in its end. The final story, \"The Mirror Machine\", is about a young man who discovers an antique mirror-making machine in his grandmother's attic. The man's fascination with the object is juxtaposed with the longwinded reminiscences it evokes from his grandmother. Written earlier in Martel's career, these tales are as moving as they are thought-provoking, as inventive in form as they are timeless in content. They display that startling mix of dazzle and depth that have made Yann Martel an international phenomenon."
+              },
+              {
+                  "isbn": "0785135820",
+                  "title": "Ender's game. Command school",
+                  "author": "Orson Scott Card ",
+                  "subject": "Space warfare--Comic books, strips, etc.",
+                  "description": "Child-hero Ender Wiggin must fight a desperate battle against a deadly alien race if mankind is to survive."
               }
           ];
-
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
             bookElements.forEach(function(ele){
@@ -86,7 +121,11 @@
             var randomNum=Math.floor(Math.random()*(numBooks))
             var book = Books[randomNum];
             var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new';
-            var randomBookDescText = book.description;
+            if (!book.description)
+              var randomBookDescText = "No description available.";
+            else
+              var randomBookDescText = book.description;
+            
             if (randomBookDescText.length > truncLen) {
                var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
             }
