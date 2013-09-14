@@ -1,13 +1,15 @@
 .container{
-  width: 80%;
+  max-width: 800px;
   margin: 0 auto;
 }
 #showOPACbtn button,#showOPACbtn button a, #newBookbtn button {
-  width: 40%;
+  width: 45%;
   margin: 0 10px 0 0;
   float:left;
 }
-
+div.row {
+  margin: 10px 0;
+}
 div.row p {
   margin: 20px 0 0 0;
 }
