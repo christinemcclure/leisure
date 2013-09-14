@@ -72,7 +72,10 @@
           ];
 
         function emptyContainer(){
-
+            var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
+            bookElements.forEach(function(ele){
+               $(ele).empty();
+            });
         }
 
         function loadRandomBook(){
