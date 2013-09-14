@@ -85,8 +85,7 @@
             var numBooks = Books.length;
             var randomNum=Math.floor(Math.random()*(numBooks))
             var book = Books[randomNum];
-//            var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new\';
- var bookURL = 'http://www.google.com';
+            var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new';
             var randomBookDescText = book.description;
             if (randomBookDescText.length > truncLen) {
                var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
