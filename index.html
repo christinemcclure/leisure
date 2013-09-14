@@ -11,6 +11,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
+        bookDesc = null; //global variable for use in multiple functions
         var Books = 
           [
               {
@@ -70,35 +71,44 @@
                   "description": "Here is the captivating story of Julia Child's years in France, where she fell in love with French food and found \"her true calling.\" From the moment she and her husband Paul, who worked for the USIS, arrived in the fall of 1948, Julia had an awakening that changed her life. Soon this tall, outspoken gal from Pasadena, California, who didn't speak a word of French and knew nothing about the country, was steeped in the language, chatting with purveyors in the local markets, and enrolled in the Cordon Bleu. She teamed up with two fellow gourmettes, Simone Beck and Louisette Bertholle, to help them with a book on French cooking for Americans. Filled with her husband's beautiful black-and-white photographs as well as family snapshots, this memoir is laced with wonderful stories about the French character, particularly in the world of food, and the way of life that Julia embraced so wholeheartedly. Bon appâetit!--From publisher description."
               }
           ];
+
         function loadRandomBook(){
+
             var truncLen = 150;
             var numBooks = Books.length;
             var randomNum=Math.floor(Math.random()*(numBooks))
             var book = Books[randomNum];
-            if (book.description.length > truncLen) {
-               var descTrunc = book.description.substring(0,truncLen) + "...";
+            bookDesc = book.description;
+            if (bookDesc.length > truncLen) {
+               var descTrunc = bookDesc.substring(0,truncLen) + "...";
             }
-            $('#bookDisplay').empty();
-            $('#bookDisplay').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
+
+
+            $('#bookInfo').empty();
+            $('#bookDesc').empty();
+
+            $('#bookInfo').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
 
             if (descTrunc){
-              $('#bookDisplay').append($('<p>').html('Description: '+descTrunc));
-              $('#bookDisplay').append($('<p id=\'desc\'>').html('Show full description'));
+              $('#bookInfo').append($('<p>').html('Description: '+descTrunc));
+              $('#bookDesc').append($('<p id=\'desc\'>').html('Show full description'));
             }
             else {
-              $('#bookDisplay').append($('<p>').html('Description: '+book.description));
+              $('#bookDesc').append($('<p>').html('Description: '+bookDesc));
             }
 
-            $('#response').html('<p>That looks interesting. '+ 
+            $('#showOPAC').html('<p>That looks interesting. '+
                   '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
                   'Is it checked out?</a></p>'
               );         
-            $('#follow').html( '<p>Show me another book</p>');
+            $('#newBook').html( '<p>Show me another book</p>');
+
+
         }
 
            loadRandomBook();//populate upon loading the page
            
-           $('#follow').click(function(){
+           $('#newBook').click(function(){
                loadRandomBook();
            });
       
@@ -107,9 +117,10 @@
   </head>
   <body>
     <p>Here's a random book:</p>
-    <div id="bookDisplay">
+    <div id="bookInfo">
     </div>
-    <p id="response"></p>
-    <p id="follow"></p>
+    <div id="bookDesc"></div>
+    <p id="showOPAC"></p>
+    <p id="newBook"></p>
   </body>
 </html>
