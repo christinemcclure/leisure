@@ -105,14 +105,15 @@
                   '<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
                   'Is it checked out?</a></p>'
               );         
-            $('#newBook').html( '<p>No, thanks. Show me another book</p>');
+            $('#newBookTxt').html( '<p>No, thanks</p>');
+            $('#newBookBtn').html( '<p>Show me another book</p>');
 
 
         }
 
            loadRandomBook();//populate upon loading the page
            
-           $('#newBook').click(function(){
+           $('#newBookBtn').click(function(){
                loadRandomBook();
            });
       
@@ -138,7 +139,8 @@
         <p id="showOPAC"></p>
       </div>
       <div class="row">
-        <p id="newBook"></p>
+        <div id="newBookTxt" class="col-md-2"></div>
+        <div id="newBookBtn" class="col-md-10"></div>
       </div>
     </div>
   </body>
