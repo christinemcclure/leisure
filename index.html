@@ -11,7 +11,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
-        bookDescText = null; //global variable for use in multiple functions
+        $BOOK_DESC_TEXT = null; //global variable for use in multiple functions
+        $( "#bookDesc" ).bind( "click", function() {
+           $('#bookDesc').empty();
+           $('#bookDesc').append($('<p>').html($BOOK_DESC_TEXT));
+        });
         var Books = 
           [
               {
@@ -78,9 +82,9 @@
             var numBooks = Books.length;
             var randomNum=Math.floor(Math.random()*(numBooks))
             var book = Books[randomNum];
-            bookDescText = book.description;
-            if (bookDescText.length > truncLen) {
-               var descTrunc = bookDescText.substring(0,truncLen) + "...";
+            $BOOK_DESC_TEXT = book.description;
+            if ($BOOK_DESC_TEXT.length > truncLen) {
+               var descTrunc = $BOOK_DESC_TEXT.substring(0,truncLen) + "...";
             }
 
 
@@ -94,7 +98,7 @@
               $('#bookDesc').append($('<p id=\'showFull\'>').html('Show full description'));
             }
             else {
-              $('#bookDesc').append($('<p>').html('Description: '+bookDescText));
+              $('#bookDesc').append($('<p>').html('Description: '+$BOOK_DESC_TEXT));
             }
 
             $('#showOPAC').html('<p>That looks interesting. '+
