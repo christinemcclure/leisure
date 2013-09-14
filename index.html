@@ -91,19 +91,16 @@
 
             $('#bookInfo').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
 
-            $('#bookDescLabel').html('Description:');
             if (descTrunc){
               $('#bookDescText').append($('<p>').html(descTrunc));
               $('#bookDescText').append($('<p id=\'showFull\'>').html('Show full description'));
             }
             else {
-              $('#bookDesc').append($('<p>').html('Description: '+randomBookDescText));
+              $('#bookDescText').append($('<p>').html('Description: '+randomBookDescText));
             }
 
-            $('#showOPACtxt').html('<p>That looks interesting.</p>');
             $('#showOPACbtn').html('<a href=\"https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor='+book.isbn+'&type=all&start_over=1&submit=Find&search=new\">'+
                   'Is it checked out?</a></p>');         
-            $('#newBookTxt').html( '<p>No, thanks</p>');
             $('#newBookBtn').html( '<p>Show me another book</p>');
 
             $( "#showFull" ).bind( "click", function( ) { // add click event for dynamically-created element
@@ -134,15 +131,15 @@
         <div id="bookInfo"></div>
       </div>
       <div class="row">
-        <div id="bookDescLabel" class="col-md-2"></div>
+        <div class="col-md-2">Description:</div>
         <div id="bookDescText" class="col-md-10"></div>
       </div>
       <div class="row">
-        <div id="showOPACtxt" class="col-md-2"></div>
+        <div class="col-md-2">That looks interesting.</div>
         <div id="showOPACbtn" class="col-md-10"></div>
       </div>
       <div class="row">
-        <div id="newBookTxt" class="col-md-2"></div>
+        <div class="col-md-2">No, thanks.</div>
         <div id="newBookBtn" class="col-md-10"></div>
       </div>
     </div>
