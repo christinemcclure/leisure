@@ -97,7 +97,7 @@
 
             if (descTrunc){
               $('#bookDescText').append($('<p>').html(descTrunc));
-              $('#bookDescText').append($('<p id=\'showFull\'>').html('Show full description'));
+              $('#bookDescText').append($('<button id=\'showFull\' class=\"btn btn-primary btn-xs\">').html('Show full description'));
             }
             else {
               $('#bookDescText').append($('<p>').html('Description: '+randomBookDescText));
@@ -129,25 +129,25 @@
       </div>
       <div class="row">
         <p>Need a break from studying? Use the Bookinator to generate a random book from Galvin's Leisure Reading collection.</p>
-        <p>Here's a random book:</p>
+        <h2>Here's a random book:</h2>
       </div>
       <div class="row">
-        <div class="col-md-2">Title:</div>
+        <div class="col-md-2"><h3>Title</h3></div>
         <div id="bookTitle" class="col-md-10"></div>
       </div>      <div class="row">
-        <div class="col-md-2">Author:</div>
+        <div class="col-md-2"><h3>Author:</h3></div>
         <div id="bookAuthor" class="col-md-10"></div>
       </div>
       <div class="row">
-        <div class="col-md-2">Description:</div>
+        <div class="col-md-2"><h3>Description:</h3></div>
         <div id="bookDescText" class="col-md-10"></div>
       </div>
       <div class="row">
-        <div class="col-md-2">That looks interesting.</div>
+        <div class="col-md-2"><h3>That looks interesting.</h3></div>
         <div id="showOPACbtn" class="col-md-10"></div>
       </div>
       <div class="row">
-        <div class="col-md-2">No, thanks.</div>
+        <div class="col-md-2"><h3>No, thanks.</h3></div>
         <div id="newBookBtn" class="col-md-10"></div>
       </div>
     </div>
