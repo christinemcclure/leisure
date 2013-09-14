@@ -11,11 +11,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
-        $BOOK_DESC_TEXT = null; //global variable for use in multiple functions
-        $( "#bookDesc" ).bind( "click", function() {
-           $('#bookDesc').empty();
-           $('#bookDesc').append($('<p>').html($BOOK_DESC_TEXT));
-        });
         var Books = 
           [
               {
@@ -76,29 +71,33 @@
               }
           ];
 
+        function emptyContainer(){
+
+        }
+
         function loadRandomBook(){
 
             var truncLen = 150;
             var numBooks = Books.length;
             var randomNum=Math.floor(Math.random()*(numBooks))
             var book = Books[randomNum];
-            $BOOK_DESC_TEXT = book.description;
-            if ($BOOK_DESC_TEXT.length > truncLen) {
-               var descTrunc = $BOOK_DESC_TEXT.substring(0,truncLen) + "...";
+            var randomBookDescText = book.description;
+            if (randomBookDescText.length > truncLen) {
+               var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
             }
 
 
-            $('#bookInfo').empty();
-            $('#bookDesc').empty();
+            emptyContainer();
 
             $('#bookInfo').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
 
+            $('#bookDescLabel').html('Description:');
             if (descTrunc){
-              $('#bookDesc').append($('<p>').html('Description: '+descTrunc));
-              $('#bookDesc').append($('<p id=\'showFull\'>').html('Show full description'));
+              $('#bookDescText').append($('<p>').html(descTrunc));
+              $('#bookDescText').append($('<p id=\'showFull\'>').html('Show full description'));
             }
             else {
-              $('#bookDesc').append($('<p>').html('Description: '+$BOOK_DESC_TEXT));
+              $('#bookDesc').append($('<p>').html('Description: '+randomBookDescText));
             }
 
             $('#showOPACtxt').html('<p>That looks interesting.</p>');
@@ -107,7 +106,10 @@
             $('#newBookTxt').html( '<p>No, thanks</p>');
             $('#newBookBtn').html( '<p>Show me another book</p>');
 
-
+            $( "#showFull" ).bind( "click", function( ) { // add click event for dynamically-created element
+               $('#bookDescText').empty();
+               $('#bookDescText').append($('<p>').html(randomBookDescText));
+            });
         }
 
            loadRandomBook();//populate upon loading the page
@@ -132,7 +134,8 @@
         <div id="bookInfo"></div>
       </div>
       <div class="row">
-        <div id="bookDesc"></div>
+        <div id="bookDescLabel" class="col-md-2"></div>
+        <div id="bookDescText" class="col-md-10"></div>
       </div>
       <div class="row">
         <div id="showOPACtxt" class="col-md-2"></div>
