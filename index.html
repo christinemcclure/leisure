@@ -89,7 +89,8 @@
 
             emptyContainer();
 
-            $('#bookInfo').append($('<p>').html('Title: '+book.title+'<br />Author: '+book.author));
+            $('#bookTitle').append($('<p>').html(book.title));
+            $('#bookAuthor').append($('<p>').html(book.author));
 
             if (descTrunc){
               $('#bookDescText').append($('<p>').html(descTrunc));
@@ -128,7 +129,11 @@
         <p>Here's a random book:</p>
       </div>
       <div class="row">
-        <div id="bookInfo"></div>
+        <div class="col-md-2">Title:</div>
+        <div id="bookTitle" class="col-md-10"></div>
+      </div>      <div class="row">
+        <div class="col-md-2">Author:</div>
+        <div id="bookAuthor" class="col-md-10"></div>
       </div>
       <div class="row">
         <div class="col-md-2">Description:</div>
