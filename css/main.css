@@ -1,0 +1,5 @@
+#showOPACbtn button,#showOPACbtn button a, #newBookbtn button {
+  width: 40%;
+  margin: 0 10px 0 0;
+  float:left;
+}
