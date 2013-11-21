@@ -13,6 +13,7 @@
     <script>
       $(document).ready(function(){
 
+
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
             bookElements.forEach(function(ele){
@@ -91,16 +92,27 @@
             
         }
 
-           loadRandomBook();//populate upon loading the page
+//           loadRandomBook();//populate upon loading the page
            
            $('#newBookBtn').click(function(){
                loadRandomBook();
            });
+
+
+
+
+        $.getJSON( "./test.json", function( data ) {
+          var items = [];
+          $('#test').html('<p>' + data.foo + '</p>'
+            + '<p>' + data.baz[1] + '</p>');
+          
+        });
       
     });
     </script>
   </head>
   <body>
+
     <div class="container">
       <div class="row">
         <h1>The Bookinator</h1>
@@ -128,5 +140,6 @@
         </div>
       </div
     </div>
+    <div id="test"></div>
   </body>
 </html>
