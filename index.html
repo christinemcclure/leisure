@@ -12,106 +12,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script>
       $(document).ready(function(){
-        var dateObj = new Date();//global so function get see it
-        var Books = 
-          [
-              {
-                  "isbn": "9780439023511",
-                  "title": "Mockingjay",
-                  "author": "Suzanne Collins",
-                  "subject": "Insurgency--Juvenile fiction",
-                  "description": "Against all odds, Katniss Everdeen has survived the Hunger Games twice. But now that she's made it out of the bloody arena alive, she's still not safe. A revolution is unfolding, and it is up to Katniss to accept responsibility for countless lives and to change the course of the future of Panem."
-              },
-              {
-                  "isbn": "9787506358026",
-                  "title": " Geng Fang yi = The hunger games",
-                  "author": "Suzanne Collins",
-                  "subject": "Survival--Juvenile fiction",
-                  "description": "In a future North America, where the rulers of Panem maintain control through an annual televised survival competition pitting young people from each of the twelve districts against one another, sixteen-year-old Katniss's skills are put to the test when she voluntarily takes her younger sister's place."
-              },
-              {
-                  "isbn": "0439023491",
-                  "title": "Catching Fire",
-                  "author": "Suzanne Collins",
-                  "subject": "Survival--Juvenile fiction",
-                  "description": "By winning the annual Hunger Games, District 12 tributes Katniss Everdeen and Peeta Mellark have secured a life of safety and plenty for themselves and their families, but because they won by defying the rules, they unwittingly become the faces of an impending rebellion."
-              },
-              {
-                  "isbn": "1451665474",
-                  "title": "Make your brain smarter : increase your brain's creativity, energy, and focus",
-                  "author": "Sandra Bond Chapman with Shelly Kirkland",
-                  "subject": "Thought and thinking",
-                  "description": "The most powerful, most staggeringly complex machine ever created is all in your head. Our brain is the most adaptable, modifiable organ in our body, and yet it is the organ we most likely give the least attention. Many individuals who are concerned with having a physically fit body stop their \"workout\" at the neck. In the past five years brain scientists have discovered much more about how the brain works, including that it can be trained to perform better than ever before. You are never too young or too old to adopt healthy brain habits that strengthen the brain's capacity to think smarter. In Make Your Brain Smarter, renowned cognitive neuroscientist Dr. Sandra Bond Chapman introduces you to the very latest research in brain science and shows you how to tailor a program to fit your own needs. In this all-inclusive book, Dr. Chapman delivers a comprehensive \"fitness\" plan that you can use to \"exercise\" your way to a healthier brain. You will find scientifically proven strategies to train deep, insightful, and strategic thinking. You will discover why memory is not the most important measure of brain function, why IQ is an outdated, misleading index of brain potential, and how to become a higher brain performer."
-              },
-              {
-                  "isbn": "9780307396440",
-                  "title": "Martha Stewart's cooking school : lessons and recipes for the home cook",
-                  "author": "by Martha Stewart with Sarah Carey",
-                  "subject": "Cookery",
-                  "description": " Culinary master Martha Stewart teaches you how to hold a chef's knife, select the very best ingredients, truss a chicken, make a perfect pot roast, prepare every vegetable, bake a flawless pie crust, and much more. Includes 200 all-new recipes with step-by-step photographs."
-              },
-              {
-                  "isbn": "1439164967",
-                  "title": "You, on a diet : the owner's manual for waist management",
-                  "author": "Michael F. Roizen and Mehmet C. Oz ",
-                  "subject": "Low-fat diet",
-                  "description": "For the first time in history, scientists are uncovering astounding medical evidence about dieting and why so many people struggle with weight issues. This work translates cutting-edge information into the best weapon against fat: knowledge."
-              },
-              {
-                  "isbn": "0470423544",
-                  "title": "So easy : luscious, healthy recipes for every meal of the week ",
-                  "author": "Ellie Krieger",
-                  "subject": "Cookery",
-                  "description": "The weekly host of the Food Network's \"Healthy Appetite\" provides dishes that tackle every possible mealtime situation. Illustrated with 50 full-color photos, her bestselling cookbook features 150 delicious, easy-to-prepare, fortifying recipes for on-the-go and at home--from cheddar apple quesadilla, pork piccata with spinach and garlic mashed potatoes, marinated flank steak with blue cheese sauce to chocolate-cream cheese panini bites and fig and ginger truffles."
-              },
-              {
-                  "isbn": "0307474852",
-                  "title": "My Life in France",
-                  "author": "Julia Child with Alex Prud'Homme",
-                  "subject": "Cookery, French",
-                  "description": "Here is the captivating story of Julia Child's years in France, where she fell in love with French food and found \"her true calling.\" From the moment she and her husband Paul, who worked for the USIS, arrived in the fall of 1948, Julia had an awakening that changed her life. Soon this tall, outspoken gal from Pasadena, California, who didn't speak a word of French and knew nothing about the country, was steeped in the language, chatting with purveyors in the local markets, and enrolled in the Cordon Bleu. She teamed up with two fellow gourmettes, Simone Beck and Louisette Bertholle, to help them with a book on French cooking for Americans. Filled with her husband's beautiful black-and-white photographs as well as family snapshots, this memoir is laced with wonderful stories about the French character, particularly in the world of food, and the way of life that Julia embraced so wholeheartedly. Bon appâetit!--From publisher description."
-              },
-              {
-                  "isbn": "074325998X",
-                  "title": "For us, the living : a comedy of customs",
-                  "author": "Robert A. Heinlein",
-                  "subject": "Traffic accident victims--Fiction",
-                  "description": "From Grandmaster Robert A. Heinlein comes a long-lost first novel, written in 1939 and never before published, introducing ideas and themes that would shape his career and define the genre that is synonymous with his name.July 12, 1939. Perry Nelson is driving along the palisades when suddenly another vehicle swerves into his lane, a tire blows out, and his car careens off the road and over a bluff. The last thing he sees before his head connects with the boulders below is a girl in a green bathing suit, prancing along the shore...."
-              },
-              {
-                  "isbn": "1607100703",
-                  "title": "Five novels",
-                  "author": "Mark Twain",
-                  "description": "Famous during his lifetime as a humorist and for his incandescent social commentary and satire, Mark Twain is most often thought of today as a novelist whose precise language and strong characters introduce readers to issues of individual freedom and community responsibility. Twain's best-known novels - The Adventures of Tom Sawyer, The Prince and the Pauper, The Adventures of Huckleberry Finn, A Connecticut Yankee in King Arthur's Court, and Pudd'nhead Wilson - are landmarks of literature that continue to entertain modern readers with their wit and insight into the American experience of the nineteenth century."
-              },
-              {
-                  "isbn": "0553801503",
-                  "title": "A feast for crows",
-                  "author": "George R.R. Martin",
-                  "subject": "Fantasy fiction",
-                  "description": "After centuries of bitter strife, the seven powers dividing the land have beaten one another into an uneasy truce. But it's not long before the survivors, outlaws, renegades, and carrion eaters of the Seven Kingdoms gather. Now, as the human crows assemble over a banquet of ashes, daring new plots and dangerous new alliances are formed while surprising faces—some familiar, others only just appearing—emerge from an ominous twilight of past struggles and chaos to take up the challenges of the terrible times ahead. Nobles and commoners, soldiers and sorcerers, assassins and sages, are coming together to stake their fortunes...and their lives. For at a feast for crows, many are the guests—but only a few are the survivors."
-              },
-              {
-                  "isbn": "0143038435",
-                  "title": "Fantasyland : a sportwriter's obsessive bid to win the world's most ruthless fantasy baseball league ",
-                  "author": "Sam Walker",
-                  "subject": "Fantasy baseball",
-                  "description": "Every spring, millions of Americans prepare to take part in one of the oddest, most obsessive, and most engrossing rituals in the sports pantheon: Rotisserie baseball, a fantasy game where armchair fans match wits by building their own teams. In 2004, Sam Walker, a sports columnist for the Wall Street Journal, decided to explore this phenomenon by talking his way into Tout Wars, a league reserved for the nation’s top experts. The result is one of the most sheerly entertaining sports books in years and a matchless look into the heart and soul of our national pastime."
-              },
-              {
-                  "isbn": "0151010900",
-                  "title": "The facts behind the Helsinki Roccamatios",
-                  "author": "Yann Martel",
-                  "description": "Here are four unforgettable stories by the author of Life of Pi. In the exquisite title novella, a very young man dying of AIDS joins his friend in fashioning a story of the Roccamatio family of Helsinki, set against the yearly march of the twentieth century whose horrors and miracles their story echoes. In \"The Time I Heard the Private Donald J. Rankin String Concerto with One Discordant Violin, by the American composer John Morton,\" a Canadian university student visits Washington, D.C., and experiences the Vietnam War and its aftermath through an intense musical encounter. In \"Manners of Dying,\" variations of a warden's letter to the mother of a son he has just executed reveal how each life is contained in its end. The final story, \"The Mirror Machine\", is about a young man who discovers an antique mirror-making machine in his grandmother's attic. The man's fascination with the object is juxtaposed with the longwinded reminiscences it evokes from his grandmother. Written earlier in Martel's career, these tales are as moving as they are thought-provoking, as inventive in form as they are timeless in content. They display that startling mix of dazzle and depth that have made Yann Martel an international phenomenon."
-              },
-              {
-                  "isbn": "0785135820",
-                  "title": "Ender's game. Command school",
-                  "author": "Orson Scott Card ",
-                  "subject": "Space warfare--Comic books, strips, etc.",
-                  "description": "Child-hero Ender Wiggin must fight a desperate battle against a deadly alien race if mankind is to survive."
-              }
-          ];
+
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
             bookElements.forEach(function(ele){
@@ -186,8 +87,7 @@
             $( "#showOPACbtn" ).bind( "click", function( ) { // add click event for dynamically-created element
               window.location.href=bookURL;
             });
-            now = formatDateTime();
-             $('#currentDatetime').text(now);
+
             
         }
 
@@ -208,7 +108,6 @@
       <div class="row">
         <p>Need a break from studying? Use the Bookinator to generate a random book from Galvin's Leisure Reading collection.</p>
         <h2>Here's a random book:</h2>
-        <p id="currentDatetime">this</p>
       </div>
       <div class="row">
         <div class="col-md-2"><h3>Title</h3></div>
