@@ -99,12 +99,16 @@
            });
 
 
+        $.getJSON( "leisureBooks.json", function( data ) {
+
+
+          // http://jquerytipsntricks.wordpress.com/2013/07/06/parse-json-data-using-jquery-getjson/
+        });
 
 
         $.getJSON( "./test.json", function( data ) {
           var items = [];
-          $('#test').html('<p>' + data.foo + '</p>'
-            + '<p>' + data.baz[1] + '</p>');
+//          $('#test').html('<p>' + data.foo + '</p>' + '<p>' + data.baz[1] + '</p>');
           
         });
       
