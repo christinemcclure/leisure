@@ -99,19 +99,14 @@
            });
 
 
-        $.getJSON( "leisureBooks.json", function( data ) {
+          $.getJSON("leisureBooks.json", function(json) {
+              var author = json.leisureBooks[0].author;
+              var summary= json.leisureBooks[0].summary
+              alert('author : '+ author + '  ' + summary);
+
+          });
 
 
-          // http://jquerytipsntricks.wordpress.com/2013/07/06/parse-json-data-using-jquery-getjson/
-        });
-
-
-        $.getJSON( "./test.json", function( data ) {
-          var items = [];
-//          $('#test').html('<p>' + data.foo + '</p>' + '<p>' + data.baz[1] + '</p>');
-          
-        });
-      
     });
     </script>
   </head>
