@@ -1,12 +1,12 @@
 // work with smaller file for now
-var testing=true;
+var testing=false;
 var dataFile;
 if (testing)
   dataFile = 'leisureBooks-sample.json';
 else
   dataFile = 'leisureBooks.json';
 
-var howMany = 3;
+var howMany = 5;
 
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
