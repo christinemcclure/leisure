@@ -6,6 +6,8 @@ if (testing)
 else
   dataFile = 'leisureBooks.json';
 
+var howMany = 3;
+
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
             bookElements.forEach(function(ele){
@@ -40,9 +42,43 @@ else
             var newDate = monthArr[monthNum] + ' ' + day + ', ' + dateObj.getFullYear() + ' ' + hour + ":" + minutes + meridian;
             return(newDate);
         }
+
+
+// don't add duplicate numbers to the array
+function checkIfInArray(arr, item){
+  var flag = false;
+  for (var i = 0; i < arr.length; i++){
+    if (arr[i]==item){
+      flag = true;
+      break;
+    }
+  }
+  return flag;
+}
+
+        function generateRandomNumbers(howMany, numBooks){
+            var debug=false;
+                  if (debug) numBooks = 5; // force more duplicates
+            var numArr= new Array; //make sure to try with just 1
+            var randomNum;
+            var flag;
+            for (var i=0; i<howMany; i++){
+              flag=true;
+              while (flag==true){
+                randomNum=Math.floor(Math.random()*(numBooks));
+                flag = checkIfInArray(numArr, randomNum);
+                if (flag ==false){
+                  numArr[i]=randomNum;
+                }
+              }
+            }
+            if (debug) alert(JSON.stringify(numArr));
+            return numArr;
+        }
         
         function loadRandomBook(){
             var debug=false;
+            var debug2=true;
             var truncLen = 200;
 
             $.getJSON(dataFile, function(json) {
@@ -54,7 +90,8 @@ else
                 if (debug) alert('number is '+ randomNum);
                 var book = json.leisureBooks[randomNum];
                 if (debug) alert('Book is '+ Books[randomNum].title);
-
+                var numArr=generateRandomNumbers(howMany, numBooks);
+                if (debug2) alert(JSON.stringify(numArr));
                 var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new';
                 if (!book.summary)
                   var randomBookDescText = "No description available.";
