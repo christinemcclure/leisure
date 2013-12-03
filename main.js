@@ -1,3 +1,11 @@
+// work with smaller file for now
+var testing=true;
+var dataFile;
+if (testing)
+  dataFile = 'leisureBooks-sample.json';
+else
+  dataFile = 'leisureBooks.json';
+
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
             bookElements.forEach(function(ele){
@@ -37,7 +45,7 @@
             var debug=false;
             var truncLen = 200;
 
-            $.getJSON("leisureBooksJSON.txt", function(json) {
+            $.getJSON(dataFile, function(json) {
                 var numBooks = json.leisureBooks.length;
                 if (debug) alert('There are '+ numBooks + ' books in the file.');
                 Books = json.leisureBooks;
