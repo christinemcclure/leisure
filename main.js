@@ -32,19 +32,20 @@
             var newDate = monthArr[monthNum] + ' ' + day + ', ' + dateObj.getFullYear() + ' ' + hour + ":" + minutes + meridian;
             return(newDate);
         }
-
+        
         function loadRandomBook(){
             var debug=false;
             var truncLen = 200;
 
-            $.getJSON("leisureBooks.json", function(json) {
+            $.getJSON("leisureBooksJSON.txt", function(json) {
                 var numBooks = json.leisureBooks.length;
                 if (debug) alert('There are '+ numBooks + ' books in the file.');
+                Books = json.leisureBooks;
                 var randomNum=0;
                 randomNum=Math.floor(Math.random()*(numBooks));
                 if (debug) alert('number is '+ randomNum);
                 var book = json.leisureBooks[randomNum];
-                if (debug) alert('Book is '+ book.title);
+                if (debug) alert('Book is '+ Books[randomNum].title);
 
                 var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new';
                 if (!book.summary)
