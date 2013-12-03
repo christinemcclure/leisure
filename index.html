@@ -13,17 +13,12 @@
     <script src="main.js"></script>
     <script>
       $(document).ready(function(){
-//           loadRandomBook();//populate upon loading the page
-           
+           loadRandomBook();//populate upon loading the page
+
+
            $('#newBookBtn').click(function(){
                loadRandomBook();
            });
-
-          $.getJSON("leisureBooks.json", function(json) {
-              var author = json.leisureBooks[0].author;
-              var summary= json.leisureBooks[0].summary
-              alert('author : '+ author + '  ' + summary);
-          });
           
     });
     </script>
