@@ -10,18 +10,33 @@ body {
   }
   table td {
     border-top: 1px solid #ccc;
-    padding: 4px 2px;
-    width: 20%;
+    padding: 4px;
+    width: 15%;
   }
 
-  .desc {width: 40%;}
+  .desc {width: 50%;}
+  .title {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
 
   thead, tfoot {
     text-align:center;
     padding: 2px;
     font-size: 1.2em;
   }
-  #heading, foot{
-    color:white;
-    background:black;
+  #heading, tfoot{
+    background:#ccc;
   }
+
+  #newBooksBtn, p.button{
+    width: 200px;
+    margin: 0 auto;
+    background:yellow;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}

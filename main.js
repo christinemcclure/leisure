@@ -106,7 +106,7 @@ function loadRandomBook(){
 //                }                      
 
                 var row = '<tr id=\"'+i+'\">';
-                row += '<td>' + thisBook.title + '</td>';
+                row += '<td class=\"title\">' + thisBook.title + '</td>';
                 row += '<td>' + thisBook.author + '</td>';
                 row += '<td class=\"desc\">' + bookSummaryTxt + '</td>'
                 row += '<td><a  target=\"_blank\" href=\"'+ bookURL +'<p class=\"button\">Is it checked out?</p></a></td>'
