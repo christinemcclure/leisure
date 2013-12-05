@@ -10,11 +10,12 @@ body {
   }
   table td {
     border-top: 1px solid #ccc;
-    padding: 4px;
+    padding: 2px;
     width: 15%;
   }
 
-  .desc {width: 50%;}
+  .desc {width: 40%;}
+  .desc + td {width: 100px}
   .title {
     font-size: 1.1em;
     font-weight: bold;
@@ -25,18 +26,11 @@ body {
     padding: 2px;
     font-size: 1.2em;
   }
-  #heading, tfoot{
+  #heading{
     background:#ccc;
   }
-
-  #newBooksBtn, p.button{
-    width: 200px;
-    margin: 0 auto;
-    background:yellow;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -o-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -khtml-border-radius: 20px;
-    border-radius: 20px;
-}
+  #bookList button{
+    font-size: 9px;
+    color:black;
+  }
+#bookList a{text-decoration: none;}
