@@ -21,19 +21,27 @@
   </head>
   <body>
 
-    <div class="container">
       <table id="bookList">
+        <thead>
         <tr>
-          <th id="header" colspan="4">Here are some random books:</th>
+          <td colspan="4">Here are some random books:</td>
         </tr>
+        </thead>
+        <tfoot>
+        <tr>
+          <td colspan="4">new books<div id="newBookBtn"></div></td>
+        </tr>
+        </tfoot>          
+        <tbody>
         <tr class="heading">
           <th>Title:</th>
           <th>Author:</th>
           <th>Summary:</th>
           <th>View in catalog</th>
         </tr>
+        </tbody>      
       </table>
-          <div id="newBookBtn"></div>
-    </div>
+
+    
   </body>
 </html>
