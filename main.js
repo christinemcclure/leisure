@@ -122,7 +122,7 @@ function checkIfInArray(arr, item){
                    $('#bookDescText').append($('<p>').html(randomBookDescText));
                 });
                 $( "#showOPACbtn" ).bind( "click", function( ) { // add click event for dynamically-created element
-                  window.location.href=bookURL;
+                  window.open(bookURL,'_blank');
                 });
 
 
