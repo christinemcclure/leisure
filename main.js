@@ -102,29 +102,33 @@ function checkIfInArray(arr, item){
                    var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
                 }
 
-                emptyContainer();
-
-                $('#bookTitle').append($('<p>').html(book.title));
-                $('#bookAuthor').append($('<p>').html(book.author));
-
-                if (descTrunc){
-                  $('#bookDescText').html('<p>'+descTrunc+'<button id=\'showFull\' class=\"btn btn-info btn-xs\">Show full description</button></p>');
+//                emptyContainer();
+                for (var i=0; i<numArr.length; i++){
+                  var row = '<tr id=\"'+i+'\"><td>';
+                  $('#bookList').append(row + Books[numArr[i]].title + '</td></tr>');
+                
                 }
-                else {
-                  $('#bookDescText').append($('<p>').html(randomBookDescText));
-                }
-
-                $('#showOPACbtn').html('<button class="btn btn-success">Checked out?</a></button>');
-                $('#newBookBtn').html( '<button class="btn btn-danger">No, thanks. Show me another book</button>');
-
-                $( "#showFull" ).bind( "click", function( ) { // add click event for dynamically-created element
-                   $('#bookDescText').empty();
-                   $('#bookDescText').append($('<p>').html(randomBookDescText));
-                });
-                $( "#showOPACbtn" ).bind( "click", function( ) { // add click event for dynamically-created element
-                  window.open(bookURL,'_blank');
-                });
-
+//                $('#1').append($('<p>').html(book.title));
+//                $('#bookAuthor').append($('<p>').html(book.author));
+//
+//                if (descTrunc){
+//                  $('#bookDescText').html('<p>'+descTrunc+'<button id=\'showFull\' class=\"btn btn-info btn-xs\">Show full description</button></p>');
+//                }
+//                else {
+//                  $('#bookDescText').append($('<p>').html(randomBookDescText));
+//                }
+//
+//                $('#showOPACbtn').html('<button class="btn btn-success">Checked out?</a></button>');
+//                $('#newBookBtn').html( '<button class="btn btn-danger">No, thanks. Show me another book</button>');
+//
+//                $( "#showFull" ).bind( "click", function( ) { // add click event for dynamically-created element
+//                   $('#bookDescText').empty();
+//                   $('#bookDescText').append($('<p>').html(randomBookDescText));
+//                });
+//                $( "#showOPACbtn" ).bind( "click", function( ) { // add click event for dynamically-created element
+//                  window.open(bookURL,'_blank');
+//                });
+//
 
             });
 
