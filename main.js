@@ -6,7 +6,7 @@ if (testing)
 else
   dataFile = 'leisureBooks.json';
 
-var howMany = 5;
+var howMany = 2;
 
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
@@ -83,31 +83,34 @@ function checkIfInArray(arr, item){
 
             $.getJSON(dataFile, function(json) {
                 var numBooks = json.leisureBooks.length;
-                if (debug) alert('There are '+ numBooks + ' books in the file.');
+//                if (debug) alert('There are '+ numBooks + ' books in the file.');
                 Books = json.leisureBooks;
-                var randomNum=0;
-                randomNum=Math.floor(Math.random()*(numBooks));
-                if (debug) alert('number is '+ randomNum);
-                var book = json.leisureBooks[randomNum];
-                if (debug) alert('Book is '+ Books[randomNum].title);
+                //if (debug) alert('number is '+ randomNum);
+//                if (debug) alert('Book is '+ Books[randomNum].title);
                 var numArr=generateRandomNumbers(howMany, numBooks);
-                if (debug2) console.log(JSON.stringify(numArr));
-                var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new';
-                if (!book.summary)
-                  var randomBookDescText = "No description available.";
-                else
-                  var randomBookDescText = book.summary;
+//                if (debug2) console.log(JSON.stringify(numArr));
+                  for (var i=0; i<=numArr.length; i++){
+                      var thisBook=Books[numArr[i]];
+//                      alert(JSON.stringify(thisBook));
+                      var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
+                      if (!thisBook.summary)
+                          randomBookDescText = "No description available.";
+                      else
+                          randomBookDescText = thisBook.summary;
+                      if (randomBookDescText.length > truncLen) {
+                         var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
+                      }
 
-                if (randomBookDescText.length > truncLen) {
-                   var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
-                }
-
-//                emptyContainer();
-                for (var i=0; i<numArr.length; i++){
-                  var row = '<tr id=\"'+i+'\"><td>';
-                  $('#bookList').append(row + Books[numArr[i]].title + '</td></tr>');
+                        var row = '<tr id=\"'+i+'\">';
+                        row += '<td>' + thisBook.title + '</td>';
+                        row += '<td>' + thisBook.author + '</td>';
+                        row += '<td>' +  randomBookDescText + '</td>';
+                        row += '<td></td>'
+                        row += '</tr>';
+                        
+                        $('#bookList').append(row);
                 
-                }
+                  }
 //                $('#1').append($('<p>').html(book.title));
 //                $('#bookAuthor').append($('<p>').html(book.author));
 //
