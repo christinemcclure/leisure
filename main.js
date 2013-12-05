@@ -113,7 +113,7 @@ function loadRandomBook(){
                 row += '<td class=\"title\">' + thisBook.title + '</td>';
                 row += '<td>' + thisBook.author + '</td>';
                 row += '<td class=\"desc\">' + bookSummaryTxt + '</td>';
-                row += '<td><button><a target=\"_blank\" href=\"'+ bookURL +'\">Is it checked out?</a></button></td>';
+                row += '<td><button><a target=\"_blank\" href=\"'+ bookURL +'\">Checked out?</a></button></td>';
                 row += '</tr>';
 
                 $('#bookList').append(row);
