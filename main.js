@@ -6,7 +6,7 @@ if (testing)
 else
   dataFile = 'leisureBooks.json';
 
-var howMany = 5;
+var howMany = 7;
 
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
