@@ -114,7 +114,7 @@ function checkIfInArray(arr, item){
                   $('#bookDescText').append($('<p>').html(randomBookDescText));
                 }
 
-                $('#showOPACbtn').html('<button class="btn btn-success">Interesting. Is it checked out?</a></button>');
+                $('#showOPACbtn').html('<button class="btn btn-success">Checked out?</a></button>');
                 $('#newBookBtn').html( '<button class="btn btn-danger">No, thanks. Show me another book</button>');
 
                 $( "#showFull" ).bind( "click", function( ) { // add click event for dynamically-created element
