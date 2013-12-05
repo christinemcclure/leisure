@@ -91,6 +91,8 @@ function loadRandomBook(){
           for (var i=0; i<=numArr.length; i++){
               var thisBook=Books[numArr[i]];
               var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
+              if (!thisBook.author)
+                  thisBook.author="(no author supplied)";
               if (!thisBook.summary)
                   bookSummaryTxt = "No description available.";
               else
