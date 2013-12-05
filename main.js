@@ -76,23 +76,24 @@ function generateRandomNumbers(howMany, numBooks){
     return numArr;
 }
 
-  function loadRandomBook(){
-      var debug=false;
-      var debug2=false;
-      var truncLen = 200;
-      var bookSummaryTxt;
+function loadRandomBook(){
+    var debug=false;
+    var debug2=false;
+    var truncLen = 200;
+    var bookSummaryTxt;
 
-      $.getJSON(dataFile, function(json) {
-          var numBooks = json.leisureBooks.length;
-          Books = json.leisureBooks;
-          var numArr=generateRandomNumbers(howMany, numBooks);
-            for (var i=0; i<=numArr.length; i++){
-                var thisBook=Books[numArr[i]];
-                var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
-                if (!thisBook.summary)
-                    bookSummaryTxt = "No description available.";
-                else
-                    bookSummaryTxt = thisBook.summary;
+    $.getJSON(dataFile, function(json) {
+        $('#bookList tbody').empty();
+        var numBooks = json.leisureBooks.length;
+        Books = json.leisureBooks;
+        var numArr=generateRandomNumbers(howMany, numBooks);
+          for (var i=0; i<=numArr.length; i++){
+              var thisBook=Books[numArr[i]];
+              var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
+              if (!thisBook.summary)
+                  bookSummaryTxt = "No description available.";
+              else
+                  bookSummaryTxt = thisBook.summary;
 //                  if (bookSummaryTxt.length > truncLen) {
 //                     var descTrunc = bookSummaryTxt.substring(0,truncLen) + "...";
 //                  }                   
@@ -103,18 +104,14 @@ function generateRandomNumbers(howMany, numBooks){
 //                  row += '<td>' + bookSummaryTxt + '</td>';
 //                }                      
 
-                  var row = '<tr id=\"'+i+'\">';
-                  row += '<td>' + thisBook.title + '</td>';
-                  row += '<td>' + thisBook.author + '</td>';
-                  row += '<td>' + bookSummaryTxt + '</td>'
-                  row += '<td><a  target=\"_blank\" href=\"'+ bookURL +'<p class=\"button\">Is it checked out?</p></a></td>'
-                  row += '</tr>';
+                var row = '<tr id=\"'+i+'\">';
+                row += '<td>' + thisBook.title + '</td>';
+                row += '<td>' + thisBook.author + '</td>';
+                row += '<td>' + bookSummaryTxt + '</td>'
+                row += '<td><a  target=\"_blank\" href=\"'+ bookURL +'<p class=\"button\">Is it checked out?</p></a></td>'
+                row += '</tr>';
 
-                  $('#bookList').append(row);
-            }
-
-
-      });
-
-
+                $('#bookList').append(row);
+          }
+    });
 }
