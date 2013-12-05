@@ -78,7 +78,7 @@ function checkIfInArray(arr, item){
         
         function loadRandomBook(){
             var debug=false;
-            var debug2=true;
+            var debug2=false;
             var truncLen = 200;
 
             $.getJSON(dataFile, function(json) {
@@ -91,7 +91,7 @@ function checkIfInArray(arr, item){
                 var book = json.leisureBooks[randomNum];
                 if (debug) alert('Book is '+ Books[randomNum].title);
                 var numArr=generateRandomNumbers(howMany, numBooks);
-                if (debug2) alert(JSON.stringify(numArr));
+                if (debug2) console.log(JSON.stringify(numArr));
                 var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + book.isbn + '&type=all&start_over=1&submit=Find&search=new';
                 if (!book.summary)
                   var randomBookDescText = "No description available.";
