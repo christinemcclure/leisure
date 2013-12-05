@@ -80,6 +80,7 @@ function checkIfInArray(arr, item){
             var debug=false;
             var debug2=false;
             var truncLen = 200;
+            var bookSummaryTxt;
 
             $.getJSON(dataFile, function(json) {
                 var numBooks = json.leisureBooks.length;
@@ -94,18 +95,25 @@ function checkIfInArray(arr, item){
 //                      alert(JSON.stringify(thisBook));
                       var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
                       if (!thisBook.summary)
-                          randomBookDescText = "No description available.";
+                          bookSummaryTxt = "No description available.";
                       else
-                          randomBookDescText = thisBook.summary;
-                      if (randomBookDescText.length > truncLen) {
-                         var descTrunc = randomBookDescText.substring(0,truncLen) + "...";
+                          bookSummaryTxt = thisBook.summary;
+                      if (bookSummaryTxt.length > truncLen) {
+                         var descTrunc = bookSummaryTxt.substring(0,truncLen) + "...";
                       }
+                   
+                if (descTrunc){
+                  row += '<td>' + descTrunc + '<button id=\'showFull\' class=\"btn btn-info btn-xs\">Show full description</button>' + '</td>';
+                }
+                else {
+                  row += '<td>' + bookSummaryTxt + '</td>';
+                }                      
 
                         var row = '<tr id=\"'+i+'\">';
                         row += '<td>' + thisBook.title + '</td>';
                         row += '<td>' + thisBook.author + '</td>';
-                        row += '<td>' +  randomBookDescText + '</td>';
-                        row += '<td></td>'
+                        row += '<td>' + bookSummaryTxt + '</td>'
+                        row += '<td><a  target=\"_blank\" href=\"'+ bookURL +'<p class=\"button\">Checked out?</p></a></td>'
                         row += '</tr>';
                         
                         $('#bookList').append(row);
@@ -114,12 +122,7 @@ function checkIfInArray(arr, item){
 //                $('#1').append($('<p>').html(book.title));
 //                $('#bookAuthor').append($('<p>').html(book.author));
 //
-//                if (descTrunc){
-//                  $('#bookDescText').html('<p>'+descTrunc+'<button id=\'showFull\' class=\"btn btn-info btn-xs\">Show full description</button></p>');
-//                }
-//                else {
-//                  $('#bookDescText').append($('<p>').html(randomBookDescText));
-//                }
+
 //
 //                $('#showOPACbtn').html('<button class="btn btn-success">Checked out?</a></button>');
 //                $('#newBookBtn').html( '<button class="btn btn-danger">No, thanks. Show me another book</button>');
