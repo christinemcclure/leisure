@@ -6,7 +6,7 @@ body {
   table {
     width: 100%;
     margin: 0 auto;
-    font-size: 1em;
+    font-size: 1.2em;
   }
   table td {
     border-top: 1px solid #ccc;
@@ -14,23 +14,44 @@ body {
     width: 15%;
   }
 
-  .desc {width: 40%;}
-  .desc + td {width: 100px}
+  .desc {
+    width: 40%;
+    font-size: 1em;
+  }
   .title {
-    font-size: 1.1em;
-    font-weight: bold;
+    font-size: 1.2em;
   }
 
   thead, tfoot {
     text-align:center;
-    padding: 2px;
+    padding: 4px 8px;
     font-size: 1.2em;
+    font-weight: 600;
   }
+  thead th {padding: 12px 0;}
   #heading{
-    background:#ccc;
+    color:#c00;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
   }
+
   #bookList button{
-    font-size: 9px;
+    display:block;
+    font-size: 10px;
     color:black;
+    width: 100px;
+    margin: 0 auto;
   }
-#bookList a{text-decoration: none;}
+#bookList a{
+  text-decoration: none;
+  color:black;
+}
+
+#bookList #newBooksBtn {
+  width: 150px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
