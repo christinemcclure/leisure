@@ -7,4 +7,4 @@ body {
     width: 80%;
     margin: 0 auto;
   }
-  table td { border: 1px solid #ccc;}
+  table td { padding: 4px 2px;}
