@@ -10,7 +10,7 @@ body {
   }
   table td {
     border-top: 1px solid #ccc;
-    padding: 2px;
+    padding: 2px 4px;
     width: 15%;
   }
 
