@@ -45,11 +45,10 @@ body {
 #bookList a{
   text-decoration: none;
   color:black;
-  padding: 8px 6px;
 }
 
 #bookList #newBooksBtn {
-  width: 150px;
+  width: 180px;
   margin: 0 auto;
   margin-top: 20px;
   padding: 4px 8px;
@@ -79,7 +78,7 @@ body {
 	-moz-border-radius-bottomleft:6px;
 	border-bottom-left-radius:6px;
 	text-indent:0;
-	border:1px solid #dcdcdc;
+	border:1px solid #666666;
 	display:inline-block;
 	text-decoration:none;
 	text-align:center;
