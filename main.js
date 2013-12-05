@@ -6,7 +6,7 @@ if (testing)
 else
   dataFile = 'leisureBooks.json';
 
-var howMany = 2;
+var howMany = 5;
 
         function emptyContainer(){
             var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
@@ -79,7 +79,7 @@ function generateRandomNumbers(howMany, numBooks){
 function loadRandomBook(){
     var debug=false;
     var debug2=false;
-    var truncLen = 200;
+    var truncLen = 350;
     var bookSummaryTxt;
 
     $.getJSON(dataFile, function(json) {
@@ -95,9 +95,9 @@ function loadRandomBook(){
                   bookSummaryTxt = "No description available.";
               else
                   bookSummaryTxt = thisBook.summary;
-//                  if (bookSummaryTxt.length > truncLen) {
-//                     var descTrunc = bookSummaryTxt.substring(0,truncLen) + "...";
-//                  }                   
+              if (bookSummaryTxt.length > truncLen) {
+                 bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "...";
+              }
 //                if (descTrunc){
 //                  row += '<td>' + descTrunc + '<button id=\'showFull\' class=\"\">Show full description</button>' + '</td>';
 //                }
