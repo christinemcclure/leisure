@@ -4,7 +4,24 @@ body {
 }
     
   table {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
+    font-size: 1em;
   }
-  table td { padding: 4px 2px;}
+  table td {
+    border-top: 1px solid #ccc;
+    padding: 4px 2px;
+    width: 20%;
+  }
+
+  .desc {width: 40%;}
+
+  thead, tfoot {
+    text-align:center;
+    padding: 2px;
+    font-size: 1.2em;
+  }
+  #heading, foot{
+    color:white;
+    background:black;
+  }
