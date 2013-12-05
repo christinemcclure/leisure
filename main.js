@@ -84,6 +84,7 @@ function loadRandomBook(){
 
     $.getJSON(dataFile, function(json) {
         $('#bookList tbody').empty();
+        $('#heading').html('Here are '+ howMany + ' random books');
         var numBooks = json.leisureBooks.length;
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
