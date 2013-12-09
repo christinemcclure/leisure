@@ -13,7 +13,7 @@ body {
     padding: 2px 4px;
     width: 15%;
   }
-
+  
   .desc {
     width: 40%;
     font-size: 1em;
@@ -47,13 +47,7 @@ body {
   color:black;
 }
 
-#bookList #newBooksBtn {
-  width: 180px;
-  margin: 20px 0 0 20px;
-  padding: 4px 8px;
-  font-size: 14px;
-  font-weight: bold;
-}
+  .center {text-align:center;}
 
 
 .button {
@@ -94,3 +88,13 @@ body {
 	top:1px;
 }
 /* This button was generated using CSSButtonGenerator.com */
+
+
+#booklist #newBooksBtnTop, #booklist #newBooksBtnBottom {
+  width: 140px;
+  margin: 0 0 0 10px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+#booklist #newBooksBtnBottom {margin-top: 20px;}
