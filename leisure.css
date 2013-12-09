@@ -23,13 +23,13 @@ body {
   }
 
   thead, tfoot {
-    text-align:center;
+    text-align:left;
     padding: 4px 8px;
     font-size: 1.2em;
     font-weight: 600;
   }
   thead th {padding: 12px 0;}
-  #heading{
+  #heading th{
     color:#c00;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -49,8 +49,7 @@ body {
 
 #bookList #newBooksBtn {
   width: 180px;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px 0 0 20px;
   padding: 4px 8px;
   font-size: 14px;
   font-weight: bold;
