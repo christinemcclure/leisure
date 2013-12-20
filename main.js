@@ -44,51 +44,60 @@ function generateRandomNumbers(howMany, numBooks){
 function loadRandomBooks(){
     var debug=false;
     var debug2=false;
-    var truncLen = 200;
+    var truncLen = 300;
     var bookSummaryTxt;
+    var truncArr = [];
 
     $.getJSON(dataFile, function(json) {
         $('#bookList tbody').empty();
         $('#headingLine').html('Here are '+ howMany + ' random books');
         var numBooks = json.leisureBooks.length;
-        var truncArr = [];
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
           for (var i=0; i<numArr.length; i++){
-              var thisBook=Books[numArr[i]];
-              console.log('i='+i);
-              if (!thisBook.isbn) thisBook.isbn=0;
-              var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
-              if (!thisBook.title) // unlikely, but handle anyway
-                  thisBook.author="[untitled]";
-              if (!thisBook.author)
-                  thisBook.author="(no author supplied)";
-              if (!thisBook.summary)
-                  bookSummaryTxt = "No description available.";
-              else
-                  bookSummaryTxt = thisBook.summary;
+            var setDesc=false;
+            var thisBook=Books[numArr[i]];
+            var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
+            if (!thisBook.title) // unlikely, but handle anyway
+                thisBook.author="[untitled]";
+            if (!thisBook.author)
+                thisBook.author="(no author supplied)";
+            if (!thisBook.summary)
+                bookSummaryTxt = "No description available.";
+            else
+                bookSummaryTxt = thisBook.summary;
 
-              var row = '<tr id=\"'+i+'\">';
-              row += '<td class=\"title\">' + thisBook.title +'</td>';
-              row += '<td>' + thisBook.author + '</td>';
+            var row = '<tr id=\"'+i+'\">';
+            row += '<td class=\"title\">' + thisBook.title +'</td>';
+            row += '<td>' + thisBook.author + '</td>';
 
-              // handle summary
-              if (bookSummaryTxt.length > truncLen) {
-                 bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
-                 truncArr[i]=thisBook.summary; // store full desc in array
-                  row += '<td class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + i + '\'>more<\a>' + '</td>'; // create more link
-              }
-              else {
-                row += '<td class=\'desc\'>' + bookSummaryTxt + '</td>';
-              }  
+            // handle summary
+            if (bookSummaryTxt.length > truncLen) {
+              setDesc=true;
+              bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
+              truncArr.push(thisBook.summary); // store full desc in array
+              var len = truncArr.length;
+              console.log ('i = '+i +' len is '+len);
+              row += '<td class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + i + '\'>more</a>' + '</td>'; // create more link
+            }
+            else {
+              row += '<td class=\'desc\'>' + bookSummaryTxt + '</td>';
+            }  
 
-              row += '<td><p class=\"button\"><a target=\"_blank\"href=\"'+ bookURL +'\">Checked out?</a></p></td>';
-              row += '</tr>';
+            row += '<td><p class=\"button\"><a target=\"_blank\"href=\"'+ bookURL +'\">Checked out?</a></p></td>';
+            row += '</tr>';
+            
+            $('#bookList').append(row);        
+      }// end for
 
-              //console.log(i + '   ' + JSON.stringify(truncArr[i]));                
-              
-              $('#bookList').append(row);        
-        }
-           console.log(JSON.stringify(truncArr));  
+      console.log('ending length=' + truncArr.length);   
+      console.log(JSON.stringify(truncArr));
+//        $('#bookList').delegate('#moreLink'+i, 'click', function() {alert("That tickles, "+i)});     
+  
     });
+    
+        
+       
+
+
 }
