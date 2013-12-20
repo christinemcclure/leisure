@@ -8,41 +8,6 @@ else
 
 var howMany = 7;
 
-        function emptyContainer(){
-            var bookElements = new Array ("#bookTitle","#bookAuthor","#bookDescText","#showOPACbtn");
-            bookElements.forEach(function(ele){
-               $(ele).empty();
-            });
-        }
-
-        function pad0(item){
-            item += ''; //convert to string
-            var len = item.length;
-            if (item.length < 2)
-                item = '0'+ item;
-            return item;
-        }
-
-        function formatDateTime(){//obj is the element to write the date to
-            var monthArr = new Array ('January', 'February','March','April','May','June','July','August','September','October','November','December');
-            var monthNum = dateObj.getMonth();
-            var day = dateObj.getDay();
-            var meridian = "";
-            var hour = dateObj.getHours();
-                if (hour > 12){// sadly, we don't use military time in this country
-                    hour = hour - 12;
-                    meridian = 'pm';
-                }
-                else {
-                    meridian = 'am';
-                }
-            var minutes = dateObj.getMinutes();
-                minutes = pad0(minutes);
-
-            var newDate = monthArr[monthNum] + ' ' + day + ', ' + dateObj.getFullYear() + ' ' + hour + ":" + minutes + meridian;
-            return(newDate);
-        }
-
 
 // don't add duplicate numbers to the array
 function checkIfInArray(arr, item){
