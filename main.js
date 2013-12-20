@@ -75,13 +75,13 @@ function loadRandomBooks(){
             if (bookSummaryTxt.length > truncLen) {
               setDesc=true;
               bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
-              truncArr.push(thisBook.summary); // store full desc in array
               var len = truncArr.length;
-              console.log ('i = '+i +' len is '+len);
-              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len-1]);
-              row += '<td class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + i + '\'>more</a>' + '</td>'; // create more link
+              truncArr.push(thisBook.summary); // store full desc in array
+              console.log (' len is '+len);
+              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
+              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
             }
-            else {
+            else {          
               row += '<td class=\'desc\'>' + bookSummaryTxt + '</td>';
             }  
 
@@ -92,8 +92,13 @@ function loadRandomBooks(){
       }// end for
 
       console.log('ending length=' + truncArr.length);   
-//      console.log(JSON.stringify(truncArr));
-//        $('#bookList').delegate('#moreLink'+i, 'click', function() {alert("That tickles, "+i)});     
+      console.log('***\n'+JSON.stringify(truncArr)+'\n***');
+
+      for ( var ele in truncArr){
+          $('#bookList').delegate('#moreLink'+ele, 'click', function() {
+            alert(ele+'\n' +truncArr[ele]);
+          });  
+      }
   
     });
     
