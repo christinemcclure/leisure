@@ -78,6 +78,7 @@ function loadRandomBooks(){
               truncArr.push(thisBook.summary); // store full desc in array
               var len = truncArr.length;
               console.log ('i = '+i +' len is '+len);
+              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len-1]);
               row += '<td class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + i + '\'>more</a>' + '</td>'; // create more link
             }
             else {
@@ -91,7 +92,7 @@ function loadRandomBooks(){
       }// end for
 
       console.log('ending length=' + truncArr.length);   
-      console.log(JSON.stringify(truncArr));
+//      console.log(JSON.stringify(truncArr));
 //        $('#bookList').delegate('#moreLink'+i, 'click', function() {alert("That tickles, "+i)});     
   
     });
