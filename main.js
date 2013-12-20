@@ -6,7 +6,7 @@ if (testing)
 else
   dataFile = 'leisureBooks.json';
 
-var howMany = 7;
+var howMany = 3;
 
 
 // don't add duplicate numbers to the array
@@ -54,8 +54,10 @@ function loadRandomBooks(){
         var truncArr = [];
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
-          for (var i=0; i<=numArr.length; i++){
+          for (var i=0; i<numArr.length; i++){
               var thisBook=Books[numArr[i]];
+              console.log('i='+i);
+              if (!thisBook.isbn) thisBook.isbn=0;
               var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
               if (!thisBook.title) // unlikely, but handle anyway
                   thisBook.author="[untitled]";
@@ -83,7 +85,10 @@ function loadRandomBooks(){
               row += '<td><p class=\"button\"><a target=\"_blank\"href=\"'+ bookURL +'\">Checked out?</a></p></td>';
               row += '</tr>';
 
-              $('#bookList').append(row);
-          }
+              //console.log(i + '   ' + JSON.stringify(truncArr[i]));                
+              
+              $('#bookList').append(row);        
+        }
+           console.log(JSON.stringify(truncArr));  
     });
 }
