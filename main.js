@@ -44,13 +44,14 @@ function generateRandomNumbers(howMany, numBooks){
 function loadRandomBooks(){
     var debug=false;
     var debug2=false;
-    var truncLen = 350;
+    var truncLen = 200;
     var bookSummaryTxt;
 
     $.getJSON(dataFile, function(json) {
         $('#bookList tbody').empty();
         $('#headingLine').html('Here are '+ howMany + ' random books');
         var numBooks = json.leisureBooks.length;
+        var truncArr = [];
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
           for (var i=0; i<=numArr.length; i++){
@@ -64,24 +65,25 @@ function loadRandomBooks(){
                   bookSummaryTxt = "No description available.";
               else
                   bookSummaryTxt = thisBook.summary;
+
+              var row = '<tr id=\"'+i+'\">';
+              row += '<td class=\"title\">' + thisBook.title +'</td>';
+              row += '<td>' + thisBook.author + '</td>';
+
+              // handle summary
               if (bookSummaryTxt.length > truncLen) {
-                 bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "...";
+                 bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
+                 truncArr[i]=thisBook.summary; // store full desc in array
+                  row += '<td class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + i + '\'>more<\a>' + '</td>'; // create more link
               }
-//                if (descTrunc){
-//                  row += '<td>' + descTrunc + '<button id=\'showFull\' class=\"\">Show full description</button>' + '</td>';
-//                }
-//                else {
-//                  row += '<td>' + bookSummaryTxt + '</td>';
-//                }                      
+              else {
+                row += '<td class=\'desc\'>' + bookSummaryTxt + '</td>';
+              }  
 
-                var row = '<tr id=\"'+i+'\">';
-                row += '<td class=\"title\">' + thisBook.title + '</td>';
-                row += '<td>' + thisBook.author + '</td>';
-                row += '<td class=\"desc\">' + bookSummaryTxt + '</td>';
-                row += '<td><p class=\"button\"><a target=\"_blank\"href=\"'+ bookURL +'\">Checked out?</a></p></td>';
-                row += '</tr>';
+              row += '<td><p class=\"button\"><a target=\"_blank\"href=\"'+ bookURL +'\">Checked out?</a></p></td>';
+              row += '</tr>';
 
-                $('#bookList').append(row);
+              $('#bookList').append(row);
           }
     });
 }
