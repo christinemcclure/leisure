@@ -41,7 +41,7 @@ function generateRandomNumbers(howMany, numBooks){
     return numArr;
 }
 
-function loadRandomBook(){
+function loadRandomBooks(){
     var debug=false;
     var debug2=false;
     var truncLen = 350;
