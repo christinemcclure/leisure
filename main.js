@@ -54,7 +54,7 @@ function loadRandomBooks(){
         var numBooks = json.leisureBooks.length;
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
-
+        var bookDesc = new Object;
           for (var i=0; i<numArr.length; i++){
             var setDesc=false;
             var thisBook=Books[numArr[i]];
@@ -82,13 +82,12 @@ function loadRandomBooks(){
 //              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
 
 //              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
-             var moreLinkID = 'moreLink'+i.toString();
+             var moreLinkID = 'MoreLink'+i.toString();
              bookDesc[i] = thisBook.summary;
-             console.log('*** '+moreLinkID);
-              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
+             console.log('*** item ' + moreLinkID + '\n' + JSON.stringify(bookDesc[i]));
+              row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
             }
             else {          
-              bookDesc[i] = 0;
               row += '<td class=\'desc\'>' + bookSummaryTxt + '</td>';
             }  
 
@@ -113,9 +112,9 @@ function loadRandomBooks(){
         document.getElementById("bookList").addEventListener("click",function(e) {
           // e.target is the clicked element!
           // If it was a list item
-          if(e.target && e.target.nodeName == "A") {
+          if(e.target && e.target.nodeName === "A") {
             // List item found!  Output the ID!
-            console.log("anchor tag ",e.target.id," was clicked!");
+            console.log("anchor tag ",e.target.id," was clicked. Here is the summary:\n"+ bookDesc[e.target.id]);
           }
         });      
       
@@ -127,6 +126,8 @@ function loadRandomBooks(){
 //          });  
 //      }
 
+      
+      console.log("array: %O" + bookDesc);
       
     });
     
