@@ -82,8 +82,8 @@ function loadRandomBooks(){
 //              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
 
 //              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
-             bookDesc[i] = thisBook.summary;
              var moreLinkID = 'moreLink'+i.toString();
+             bookDesc[i] = thisBook.summary;
              console.log('*** '+moreLinkID);
               row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
             }
@@ -112,7 +112,7 @@ function loadRandomBooks(){
 
 
 //      console.log('ending length=' + truncArr.length);   
-//      console.log('***\n'+JSON.stringify(truncArr)+'\n***');
+      console.log('***\n'+JSON.stringify(bookDesc)+'\n***');
 //
 //      for ( var ele in truncArr){
 //          $('#bookList').delegate('#moreLink'+ele, 'click', function() {
