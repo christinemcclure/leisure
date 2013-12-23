@@ -1,14 +1,16 @@
 // work with smaller file for now
-var testing=false;
+var debug=false;
 var dataFile;
-if (testing)
+if (debug)
   dataFile = 'leisureBooks-sample.json';
 else
   dataFile = 'leisureBooks.json';
-
-var howMany = 3;
+var howMany = 5;
 var descriptions = []; // for an array of bookDesc objects;
 
+function init(){ // listen for any click events inside table
+  $( "#bookList" ).on("click", changeDesc);
+}
 
 // don't add duplicate numbers to the array
 function checkIfInArray(arr, item){
@@ -42,9 +44,27 @@ function generateRandomNumbers(howMany, numBooks){
     return numArr;
 }
 
+function findDesc(idToFind){
+  for (var i in descriptions){
+    if (descriptions[i].id===idToFind){
+      return descriptions[i].summary;
+    }
+    else {
+      continue;
+    }
+  }
+}       
+
+  // Use event delegation    
+function changeDesc() {
+  console.log( event.target.id + " clicked" );
+  var thisDesc;
+  thisDesc=findDesc(event.target.id);
+  $('#text'+event.target.id).html(thisDesc);
+}
+
+
 function loadRandomBooks(){
-    var debug=false;
-    var debug2=false;
     var truncLen = 200;
     var bookSummaryTxt;
     var truncArr = [];
@@ -78,9 +98,8 @@ function loadRandomBooks(){
              var moreLinkID = 'MoreLink'+i.toString();
              bookDesc.id = moreLinkID;
              bookDesc.summary = thisBook.summary;
-             console.log('LOOP i = ' + i + ' ' +JSON.stringify(bookDesc));
+             if (debug) console.log('LOOP i = ' + i + ' ' +JSON.stringify(bookDesc));
              descriptions.push(bookDesc);
-//             console.log('*** item ' + moreLinkID + '\n' + bookDesc[moreLinkID]);
               row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
             }
             
@@ -92,59 +111,16 @@ function loadRandomBooks(){
             row += '</tr>';
             
             $('#bookList').append(row); 
-//            $( "#bookList td#cell"+i+' #moreLink'+i ).on( "click", function() {
-//              alert('i is '+i+' and title is "'+ thisBook.title);
-//            });
-
-
-//            $('#row'+i).on('click', '#'+moreLinkID, function(){
-//                 alert(JSON.stringify(bookDesc[i])); 
-//            });
 
       }// end for
-      
-      
 
-        // Use event delegation
-//        document.getElementById("bookList").addEventListener("click",function(e) {
-//          // e.target is the clicked element!
-//          // If it was a list item
-//          if(e.target && e.target.nodeName === "A") {
-//            // List item found!  Output the ID!
-//            var thisDesc;
-//            thisDesc=findDesc(e.target.id);
-//            console.log("anchor tag ",e.target.id," was clicked. Here is the summary:\n"+ thisDesc);
-//          }
-//        });      
-      function changeDesc() {
-        console.log( event.target.id + " clicked" );
-        var thisDesc;
-        thisDesc=findDesc(event.target.id);
-        $('#text'+event.target.id).html(thisDesc);
-      }
-      
-      $( "#bookList" ).on( "click", changeDesc );
-
-      for ( var ele in descriptions){         
-         console.log('ele: '+ ele + ' item: '+ JSON.stringify(descriptions[ele])+'\n');
-      }
-
-      
-
-      
-    });
-    
-        
-      function findDesc(idToFind){
-        for (var i in descriptions){
-          if (descriptions[i].id===idToFind){
-            return descriptions[i].summary;
-          }
-          else {
-            continue;
-          }
+      if (debug){
+        for ( var ele in descriptions){         
+           console.log('ele: '+ ele + ' item: '+ JSON.stringify(descriptions[ele])+'\n');
         }
-      }       
+      }
+      
+    });// end getJSON
 
+} // end loadRandomBooks
 
-}
