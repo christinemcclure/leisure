@@ -44,7 +44,7 @@ function generateRandomNumbers(howMany, numBooks){
 function loadRandomBooks(){
     var debug=false;
     var debug2=false;
-    var truncLen = 50;
+    var truncLen = 200;
     var bookSummaryTxt;
     var truncArr = [];
 
@@ -73,12 +73,13 @@ function loadRandomBooks(){
 
             // handle summary
             if (bookSummaryTxt.length > truncLen) {
-              setDesc=true;
               bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
-              var len = truncArr.length;
-              truncArr.push(thisBook.summary); // store full desc in array
-              console.log (' len is '+len);
-              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
+              console.log('i is '+i+' and title is "'+ thisBook.title + '" and summary is \n' + bookSummaryTxt);
+                var len = 1;
+//              truncArr.push(thisBook.summary); // store full desc in array
+//              console.log (' len is '+len);
+//              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
+
               row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
             }
             else {          
@@ -91,15 +92,17 @@ function loadRandomBooks(){
             $('#bookList').append(row);        
       }// end for
 
-      console.log('ending length=' + truncArr.length);   
-      console.log('***\n'+JSON.stringify(truncArr)+'\n***');
 
-      for ( var ele in truncArr){
-          $('#bookList').delegate('#moreLink'+ele, 'click', function() {
-            alert(ele+'\n' +truncArr[ele]);
-          });  
-      }
-  
+//      console.log('ending length=' + truncArr.length);   
+//      console.log('***\n'+JSON.stringify(truncArr)+'\n***');
+//
+//      for ( var ele in truncArr){
+//          $('#bookList').delegate('#moreLink'+ele, 'click', function() {
+//            alert(ele+'\n' +truncArr[ele]);
+//          });  
+//      }
+
+      
     });
     
         
