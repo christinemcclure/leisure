@@ -54,9 +54,9 @@ function loadRandomBooks(){
         var numBooks = json.leisureBooks.length;
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
-        var descriptions = [];
-        var bookDesc = {};
+        var descriptions = []; // for an array of bookDesc objects;
           for (var i=0; i<numArr.length; i++){
+            var bookDesc = {};
             var setDesc=false;
             var thisBook=Books[numArr[i]];
             var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
@@ -76,19 +76,15 @@ function loadRandomBooks(){
             // handle summary
             if (bookSummaryTxt.length > truncLen) {
               bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
-//              console.log('TRUNC - i is '+i+' and title is "'+ thisBook.title + '" and summary is \n' + bookSummaryTxt);
-//              truncArr.push(thisBook.summary); // store full desc in array
-//              console.log (' len is '+len);
-//              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
-
-//              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
              var moreLinkID = 'MoreLink'+i.toString();
              bookDesc.id = moreLinkID;
-             bookDesc.summary = thisBook.summary;
+             bookDesc.summary = bookSummaryTxt;
+             console.log('LOOP i = ' + i + ' ' +JSON.stringify(bookDesc));
              descriptions.push(bookDesc);
 //             console.log('*** item ' + moreLinkID + '\n' + bookDesc[moreLinkID]);
               row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
             }
+            
             else {          
               row += '<td class=\'desc\'>' + bookSummaryTxt + '</td>';
             }  
@@ -121,15 +117,13 @@ function loadRandomBooks(){
         });      
       
       
-//
-//      for ( var ele in truncArr){
-//          $('#bookList').delegate('#moreLink'+ele, 'click', function() {
-//            alert(ele+'\n' +truncArr[ele]);
-//          });  
-//      }
+
+      for ( var ele in descriptions){
+         console.log('ele: '+ ele + ' item: '+ JSON.stringify(descriptions[ele])+'\n');
+      }
 
       
- console.log('ARRAY OR OBJECTS: \n'+JSON.stringify(descriptions));
+
       
     });
     
