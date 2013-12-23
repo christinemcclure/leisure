@@ -100,15 +100,34 @@ function loadRandomBooks(){
 //              alert('i is '+i+' and title is "'+ thisBook.title);
 //            });
 
-            $('#moreLink'+i.toString()).click(function() { 
-              alert('i is '+i + thisBook.summary);
-            });
 
 //            $('#row'+i).on('click', '#'+moreLinkID, function(){
 //                 alert(JSON.stringify(bookDesc[i])); 
 //            });
 
       }// end for
+      
+      
+      
+  $('#bookList')
+    .on('click', 'button, img, a', function(event) {
+      event.preventDefault();
+ //     var target = event.target;
+ 
+      switch(target.tagName.toLowerCase()) {
+        case 'img':
+          loadImage();
+          break;
+        case 'a':
+          alert('clicked');
+          break;
+        case 'button':
+          addToCart();
+          break;
+        default:
+          // do nothing
+      }
+    });      
 
 
 //      console.log('ending length=' + truncArr.length);   
