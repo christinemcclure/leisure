@@ -57,7 +57,6 @@ function loadRandomBooks(){
         var descriptions = []; // for an array of bookDesc objects;
           for (var i=0; i<numArr.length; i++){
             var bookDesc = {};
-            var setDesc=false;
             var thisBook=Books[numArr[i]];
             var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
             if (!thisBook.title) // unlikely, but handle anyway
