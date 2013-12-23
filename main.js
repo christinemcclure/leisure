@@ -83,8 +83,8 @@ function loadRandomBooks(){
 
 //              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
              var moreLinkID = 'MoreLink'+i.toString();
-             bookDesc[i] = thisBook.summary;
-             console.log('*** item ' + moreLinkID + '\n' + JSON.stringify(bookDesc[i]));
+             bookDesc[moreLinkID] = thisBook.summary;
+             console.log('*** item ' + moreLinkID + '\n' + JSON.stringify(bookDesc[moreLinkID]));
               row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
             }
             else {          
