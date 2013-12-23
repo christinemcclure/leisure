@@ -10,7 +10,7 @@
     <script src="main.js"></script>
     <script>
       $(document).ready(function(){
-
+           init();// start event listener for dynamic links
            loadRandomBooks();//populate upon loading the page
            $('#newBooksBtnTop').click(function(){
                loadRandomBooks();
@@ -18,8 +18,7 @@
            $('#newBooksBtnBottom').click(function(){
                loadRandomBooks();
            });
-          
-    });
+      });
     </script>
   </head>
   <body>
