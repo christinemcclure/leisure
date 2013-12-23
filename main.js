@@ -7,6 +7,7 @@ else
   dataFile = 'leisureBooks.json';
 
 var howMany = 3;
+var descriptions = []; // for an array of bookDesc objects;
 
 
 // don't add duplicate numbers to the array
@@ -54,7 +55,6 @@ function loadRandomBooks(){
         var numBooks = json.leisureBooks.length;
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
-        var descriptions = []; // for an array of bookDesc objects;
           for (var i=0; i<numArr.length; i++){
             var bookDesc = {};
             var thisBook=Books[numArr[i]];
@@ -111,13 +111,14 @@ function loadRandomBooks(){
           // If it was a list item
           if(e.target && e.target.nodeName === "A") {
             // List item found!  Output the ID!
-            console.log("anchor tag ",e.target.id," was clicked. Here is the summary:\n"+ bookDesc[e.target.id]);
+            var thisDesc;
+            thisDesc=findDesc(e.target.id);
+            console.log("anchor tag ",e.target.id," was clicked. Here is the summary:\n"+ thisDesc);
           }
         });      
       
-      
 
-      for ( var ele in descriptions){
+      for ( var ele in descriptions){         
          console.log('ele: '+ ele + ' item: '+ JSON.stringify(descriptions[ele])+'\n');
       }
 
@@ -127,7 +128,16 @@ function loadRandomBooks(){
     });
     
         
-       
+      function findDesc(idToFind){
+        for (var i in descriptions){
+          if (descriptions[i].id===idToFind){
+            return descriptions[i].summary;
+          }
+          else {
+            continue;
+          }
+        }
+      }       
 
 
 }
