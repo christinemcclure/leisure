@@ -108,30 +108,18 @@ function loadRandomBooks(){
       }// end for
       
       
+
+        // Get the element, add a click listener...
+        document.getElementById("bookList").addEventListener("click",function(e) {
+          // e.target is the clicked element!
+          // If it was a list item
+          if(e.target && e.target.nodeName == "A") {
+            // List item found!  Output the ID!
+            console.log("anchor tag ",e.target.id," was clicked!");
+          }
+        });      
       
-  $('#bookList')
-    .on('click', 'button, img, a', function(event) {
-      event.preventDefault();
- //     var target = event.target;
- 
-      switch(target.tagName.toLowerCase()) {
-        case 'img':
-          loadImage();
-          break;
-        case 'a':
-          alert('clicked');
-          break;
-        case 'button':
-          addToCart();
-          break;
-        default:
-          // do nothing
-      }
-    });      
-
-
-//      console.log('ending length=' + truncArr.length);   
-      console.log('***\n'+JSON.stringify(bookDesc)+'\n***');
+      
 //
 //      for ( var ele in truncArr){
 //          $('#bookList').delegate('#moreLink'+ele, 'click', function() {
