@@ -77,7 +77,7 @@ function loadRandomBooks(){
               bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
              var moreLinkID = 'MoreLink'+i.toString();
              bookDesc.id = moreLinkID;
-             bookDesc.summary = bookSummaryTxt;
+             bookDesc.summary = thisBook.summary;
              console.log('LOOP i = ' + i + ' ' +JSON.stringify(bookDesc));
              descriptions.push(bookDesc);
 //             console.log('*** item ' + moreLinkID + '\n' + bookDesc[moreLinkID]);
@@ -105,18 +105,25 @@ function loadRandomBooks(){
       
       
 
-        // Get the element, add a click listener...
-        document.getElementById("bookList").addEventListener("click",function(e) {
-          // e.target is the clicked element!
-          // If it was a list item
-          if(e.target && e.target.nodeName === "A") {
-            // List item found!  Output the ID!
-            var thisDesc;
-            thisDesc=findDesc(e.target.id);
-            console.log("anchor tag ",e.target.id," was clicked. Here is the summary:\n"+ thisDesc);
-          }
-        });      
+        // Use event delegation
+//        document.getElementById("bookList").addEventListener("click",function(e) {
+//          // e.target is the clicked element!
+//          // If it was a list item
+//          if(e.target && e.target.nodeName === "A") {
+//            // List item found!  Output the ID!
+//            var thisDesc;
+//            thisDesc=findDesc(e.target.id);
+//            console.log("anchor tag ",e.target.id," was clicked. Here is the summary:\n"+ thisDesc);
+//          }
+//        });      
+      function changeDesc() {
+        console.log( event.target.id + " clicked" );
+        var thisDesc;
+        thisDesc=findDesc(event.target.id);
+        $('#text'+event.target.id).html(thisDesc);
+      }
       
+      $( "#bookList" ).on( "click", changeDesc );
 
       for ( var ele in descriptions){         
          console.log('ele: '+ ele + ' item: '+ JSON.stringify(descriptions[ele])+'\n');
