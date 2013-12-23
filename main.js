@@ -5,7 +5,7 @@ if (debug)
   dataFile = 'leisureBooks-sample.json';
 else
   dataFile = 'leisureBooks.json';
-var howMany = 5;
+var howMany = 10;
 var descriptions = []; // for an array of bookDesc objects;
 
 function init(){ // listen for any click events inside table
@@ -65,7 +65,7 @@ function changeDesc() {
 
 
 function loadRandomBooks(){
-    var truncLen = 200;
+    var truncLen = 150;
     var bookSummaryTxt;
     var truncArr = [];
 
@@ -100,7 +100,7 @@ function loadRandomBooks(){
              bookDesc.summary = thisBook.summary;
              if (debug) console.log('LOOP i = ' + i + ' ' +JSON.stringify(bookDesc));
              descriptions.push(bookDesc);
-              row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
+              row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\' class=\"descLink\">more</a>' + '</td>'; // create more link
             }
             
             else {          
