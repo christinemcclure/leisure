@@ -54,11 +54,11 @@ function loadRandomBooks(){
         var numBooks = json.leisureBooks.length;
         Books = json.leisureBooks;
         var numArr=generateRandomNumbers(howMany, numBooks);
-        var bookDesc = new Object;
+        var descriptions = [];
+        var bookDesc = {};
           for (var i=0; i<numArr.length; i++){
             var setDesc=false;
             var thisBook=Books[numArr[i]];
-            var bookDesc = [];
             var bookURL = 'https://vufind.carli.illinois.edu/vf-iit/Search/Home?lookfor=' + thisBook.isbn + '&type=all&start_over=1&submit=Find&search=new';
             if (!thisBook.title) // unlikely, but handle anyway
                 thisBook.author="[untitled]";
@@ -76,15 +76,17 @@ function loadRandomBooks(){
             // handle summary
             if (bookSummaryTxt.length > truncLen) {
               bookSummaryTxt = bookSummaryTxt.substring(0,truncLen) + "..."; 
-              console.log('TRUNC - i is '+i+' and title is "'+ thisBook.title + '" and summary is \n' + bookSummaryTxt);
+//              console.log('TRUNC - i is '+i+' and title is "'+ thisBook.title + '" and summary is \n' + bookSummaryTxt);
 //              truncArr.push(thisBook.summary); // store full desc in array
 //              console.log (' len is '+len);
 //              console.log ('full desc for \"' + thisBook.title + '\" is: '+ truncArr[len]);
 
 //              row += '<td id=\"cell'+i+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'moreLink' + len + '\'>more</a>' + '</td>'; // create more link
              var moreLinkID = 'MoreLink'+i.toString();
-             bookDesc[moreLinkID] = thisBook.summary;
-             console.log('*** item ' + moreLinkID + '\n' + JSON.stringify(bookDesc[moreLinkID]));
+             bookDesc.id = moreLinkID;
+             bookDesc.summary = thisBook.summary;
+             descriptions.push(bookDesc);
+//             console.log('*** item ' + moreLinkID + '\n' + bookDesc[moreLinkID]);
               row += '<td id=\"text'+moreLinkID+'\" class=\'desc\'>' + bookSummaryTxt + ' <a id=\'' + moreLinkID + '\'>more</a>' + '</td>'; // create more link
             }
             else {          
@@ -127,7 +129,7 @@ function loadRandomBooks(){
 //      }
 
       
-      console.log("array: %O" + bookDesc);
+ console.log('ARRAY OR OBJECTS: \n'+JSON.stringify(descriptions));
       
     });
     
