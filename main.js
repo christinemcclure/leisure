@@ -67,7 +67,7 @@ function changeDesc() {
 function loadRandomBooks(){
     var truncLen = 150;
     var bookSummaryTxt;
-    var truncArr = [];
+    descriptions = [];
 
     $.getJSON(dataFile, function(json) {
         $('#bookList tbody').empty();
