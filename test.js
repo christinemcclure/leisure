@@ -9,9 +9,7 @@ var howMany = 10;
 var descriptions = []; // for an array of bookDesc objects;
 
 function init(){ // listen for any click events inside table
-  $( "#bookList" ).on("click", function(e){
-    changeDesc(e);
-  });
+  $( "#bookList" ).on("click", changeDesc);
 }
 
 // don't add duplicate numbers to the array
@@ -58,18 +56,18 @@ function findDesc(idToFind){
 }       
 
   // Use event delegation    
-function changeDesc(e) {
-  console.log( e.target.id + " clicked" );
+function changeDesc() {
+  console.log( event.target.id + " clicked" );
   var thisDesc;
-  thisDesc=findDesc(e.target.id);
-  $('#text'+e.target.id).html(thisDesc);
+  thisDesc=findDesc(event.target.id);
+  $('#text'+event.target.id).html(thisDesc);
 }
 
 
 function loadRandomBooks(){
     var truncLen = 150;
     var bookSummaryTxt;
-    descriptions = [];
+    var truncArr = [];
 
     $.getJSON(dataFile, function(json) {
         $('#bookList tbody').empty();
